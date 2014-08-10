@@ -2,14 +2,15 @@
 
 import socket
 import sys
-
-host='32.213.14.5'
-port=2323
+import time
 
 s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+host=''
+port=2323
+
 print("Socket Created")
-s.connect((host,port))
+s.connect(('localhost',port))
 print s.recv(1024)
 while True:
         message=raw_input('Enter message: ')
@@ -17,4 +18,6 @@ while True:
         print("Waiting for reply")
         reply=s.recv(1024)
         print('Received: ',repr(reply))
+
+print "The time is" + reply.decode('ascii')
 s.close()
